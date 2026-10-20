@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Teruntukmu, Anggun</title>
+<title>For U, Moodboosterkuu/title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Pixelify+Sans:wght@500;700&display=swap">
 <style>
@@ -110,7 +110,7 @@ body {
   to   { transform: none; opacity: 1; }
 }
 
-#bubble { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; will-change: transform; opacity: 0; }
+#bubble { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; will-change: transform; opacity: 0; width: max-content; }
 #bubble .cloud {
   box-sizing: border-box;
   background: #fffdf8;
@@ -118,7 +118,9 @@ body {
   border-radius: 22px;
   padding: 9px 16px;
   font: 800 clamp(13px, 1.5vw, 16px)/1.25 var(--font-body);
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
   box-shadow: 0 4px 0 var(--plum);
 }
 #bubble .cloud.pop { animation: bpop .42s cubic-bezier(.2, 1.6, .4, 1); }
@@ -180,13 +182,11 @@ body {
   ];
   const PRAISE = [
     'Cemangatt ya Anggun!',
-    'Bersatu kita teguh, berdua kita.. ',
-    'aduh boleh tuhh!',
+    'Bersatu kita teguh, berdua kita.. aduh boleh tuhh!',
     'Selain Indomie, kamu juga seleraku...',
     'Dihatiku ada kamu, dihatimu ada aku ngakk?',
     'Jaga kesehatan yaa cantikk, kalo sakit potong gaji!',
-    'Biarpun aku bisa mapping,',
-    'tapi kalo urusan hati pasti aku nyasar!',
+    'Biarpun aku bisa mapping, tapi kalo urusan hati pasti aku nyasar!',
     'Ketik "Ping" dibalas "Yaa". Kalo kangen dibalas apa??!',
     'Selain es teh manis, apa lagi yang manis?!',
     'Yaa senyuman kamu!',
@@ -327,8 +327,8 @@ body {
 
   /* ---------- layout ---------- */
   function measureBubble() {
-    const r = bt.getBoundingClientRect();
-    bw = r.width; bh = r.height;
+    /* offsetWidth/Height ignore the pop animation's scale(), unlike getBoundingClientRect */
+    bw = bt.offsetWidth; bh = bt.offsetHeight;
   }
 
   function resize() {
@@ -344,6 +344,7 @@ body {
     cy = Math.round(dockTop * 0.47);
     ds = clamp(Math.round(W / 200), 4, 7);
     dog.x = clamp(dog.x, 8, Math.max(8, W - 20 * ds - 8));
+    bubble.style.maxWidth = Math.max(60, W - 16) + 'px';
 
     const fr = seeded(7);
     flowers = [];
