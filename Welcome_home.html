@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e0457b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Welcome Home, Sweety</title>
+<style>
+:root{--bg:#fff5f7;--card:#ffffff;--ink:#3a2330;--mute:#8a6577;--accent:#e0457b;--accent2:#ffd6e3;--code:#2b1b25;--codeink:#ffc2d6;--line:#f3d3de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1016;--card:#26171f;--ink:#fbe9f0;--mute:#c9a1b3;--accent:#ff6b9d;--accent2:#4a2535;--code:#0f080c;--codeink:#ffb3cd;--line:#47283a}}
+:root[data-theme="dark"]{--bg:#1a1016;--card:#26171f;--ink:#fbe9f0;--mute:#c9a1b3;--accent:#ff6b9d;--accent2:#4a2535;--code:#0f080c;--codeink:#ffb3cd;--line:#47283a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--bg)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;min-height:100vh;overflow-x:hidden}
+main{max-width:640px;margin:0 auto;padding:24px 18px 60px}
+h1{font-size:1.9rem;margin:8px 0 4px;line-height:1.2}
+h2{font-size:1.1rem;margin:0 0 12px}
+.sub{color:var(--mute);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}
+.term{background:var(--code);color:var(--codeink);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;border-radius:14px;padding:14px 16px;margin-bottom:16px;min-height:92px;overflow-x:auto}
+.term .p{opacity:.6}
+.cur{display:inline-block;width:8px;height:1em;background:var(--codeink);vertical-align:-2px;animation:b 1s steps(2) infinite}
+@keyframes b{50%{opacity:0}}
+.moods{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;cursor:pointer;touch-action:manipulation;-webkit-appearance:none;appearance:none}
+.mood{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:10px 14px;min-height:44px}
+.mood[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#msg,#plan{margin-top:14px;padding:14px;border-radius:12px;background:var(--accent2);min-height:60px}
+.big{width:100%;border:0;background:var(--accent);color:#fff;border-radius:14px;padding:14px;font-size:1.05rem;font-weight:600;display:block;text-align:center;text-decoration:none}
+.big:active{transform:scale(.98)}
+.count{text-align:center;color:var(--mute);margin:10px 0 0;font-size:.9rem}
+.task{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.task:last-of-type{border-bottom:0}
+.task input{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.task.done span{text-decoration:line-through;color:var(--mute)}
+.bar{height:10px;background:var(--accent2);border-radius:99px;overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+#bugs{margin:8px 0 0;color:var(--mute);font-size:.9rem}
+.heart{position:fixed;pointer-events:none;font-size:24px;animation:up 1.6s ease-out forwards;z-index:9}
+@keyframes up{to{transform:translateY(-220px) scale(1.4);opacity:0}}
+.orb{width:90px;height:90px;border-radius:50%;background:var(--accent2);border:2px solid var(--accent);margin:36px auto;transition:transform 4s ease-in-out}.orb.in{transform:scale(1.6)}
+.addrow{display:flex;gap:8px}
+.addrow input{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);-webkit-appearance:none;appearance:none}
+.wl{list-style:none;padding:0;margin:12px 0 0}.wl li{padding:8px 0;border-bottom:1px dashed var(--line);overflow-wrap:anywhere}.wl li:before{content:"✓ ";color:var(--accent)}
+.foot{text-align:center;color:var(--mute);font-size:.85rem;margin-top:24px}
+.theme{float:right;background:none;border:1px solid var(--line);color:var(--mute);border-radius:99px;padding:6px 12px;font-size:.8rem;min-height:36px}
+</style>
+</head>
+<body>
+<main>
+<button class="theme" id="th" aria-label="Ganti tema">🌙 / ☀️</button>
+<h1>Welcome Home, Sweety 🏡</h1>
+<p class="sub">Udah ya kerjaannya. Sekarang waktunya kamu santai, kamu udah lakukan yang terbaik. Berbagai hal baru, lama dan lainnya kamu temui hari ini. Aku bangga padamu</p>
+
+<div class="term" aria-live="polite"><span class="p">♡ </span><span id="t"></span><span class="cur"></span></div>
+
+<section class="card">
+<h2>Hari ini rasanya gimana?</h2>
+<div class="moods" id="moods"></div>
+<div id="msg">Pilih satu, nanti aku jawab. Tekan lagi kalau mau pesan yang lain. 💌</div>
+</section>
+
+<section class="card">
+<h2>Waktunya manjain diri 🌷</h2>
+<label class="task"><input type="checkbox"><span>Lepas sepatu dan taruh tas</span></label>
+<label class="task"><input type="checkbox"><span>Minum segelas air putih</span></label>
+<label class="task"><input type="checkbox"><span>Tarik napas dalam, 3 kali</span></label>
+<label class="task"><input type="checkbox"><span>Makan yang enak, jangan dilewatkan</span></label>
+<label class="task"><input type="checkbox"><span>Rebahan tanpa merasa bersalah</span></label>
+<div class="bar"><i id="fill"></i></div>
+<p id="bugs">5 hal lagi, pelan-pelan aja</p>
+</section>
+
+<section class="card">
+<button class="big" id="hug">🤗 Kirim pelukan</button>
+<p class="count" id="cnt">Belum ada pelukan. Tekan tombolnya ya.</p>
+</section>
+
+<section class="card"><h2>Malam ini enaknya apa?</h2><div class="moods" id="plans"></div><div id="plan">Pilih satu, kita atur bareng.</div></section>
+
+<section class="card" style="text-align:center"><h2>Tarik napas dulu, yuk</h2><div id="orb" class="orb"></div><p id="bt" class="count">Tekan mulai kalau udah siap.</p><button class="mood" id="bb" style="margin-top:10px">Mulai</button></section>
+
+<section class="card"><h2>Hal kecil yang berhasil kamu lakuin hari ini ✨</h2>
+<div class="addrow"><input id="wi" type="text" maxlength="80" placeholder="Misal: akhirnya kelar laporan" aria-label="Hal kecil hari ini"><button class="mood" id="wa">Tambah</button></div>
+<ul id="wl" class="wl"></ul><p id="wm" class="count">Sekecil apa pun boleh dicatat.</p></section>
+
+<section class="card"><a class="big" id="sendwa" href="https://wa.me/629520319325" rel="noopener">💌 Kabarin dia lewat WhatsApp</a><p class="count">Pesannya terisi otomatis, kamu tinggal tekan kirim.</p></section>
+
+<p class="foot">Dibuat dengan <code>♥</code> oleh seseorang yang bangga banget sama kamu.</p>
+</main>
+<script>
+(function(){
+var lines=["Selamat datang di rumah, Anggun.","Hari ini kamu udah berusaha banyak.","Di sini kamu boleh santai.","Aku seneng kamu udah pulang.","Anggun, hari ini kamu keren banget. Serius."];
+var li=0,ci=0,del=false,t=document.getElementById("t");
+function tick(){var s=lines[li];
+ if(!del){ci++;t.textContent=s.slice(0,ci);if(ci>=s.length){del=true;return setTimeout(tick,2200)}return setTimeout(tick,45)}
+ ci-=2;if(ci<=0){ci=0;del=false;li=(li+1)%lines.length;t.textContent="";return setTimeout(tick,300)}
+ t.textContent=s.slice(0,ci);setTimeout(tick,18)}
+tick();
+
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function pickGroup(container,data,out){
+ Object.keys(data).forEach(function(k){
+  var b=document.createElement("button");b.type="button";b.className="mood";b.textContent=k;b.setAttribute("aria-pressed","false");
+  b.addEventListener("click",function(){
+   container.querySelectorAll(".mood").forEach(function(x){x.setAttribute("aria-pressed","false")});
+   b.setAttribute("aria-pressed","true");
+   var a=data[k];out.textContent=Array.isArray(a)?a[Math.floor(Math.random()*a.length)]:a;
+   updWA();
+  });
+  container.appendChild(b);
+ });
+}
+
+var moods={
+"😮‍💨 Capek banget":["Hari ini panjang ya. Istirahat aja dulu, nggak usah ngapa-ngapain.","Mandi dulu, habis itu santai. Mau aku bikinin teh?","Capek ya? Duduk sini, ceritanya nanti aja kalau udah enakan."],
+"😤 Kesal":["Kenapa? Cerita aja, aku dengerin.","Wajar sih kalau kesel. Mau cerita atau diem dulu?","Pasti nyebelin banget. Terus tadi gimana?"],
+"🥺 Sedih":["Nggak apa-apa kalau lagi nggak baik-baik aja. Aku di sini.","Mau cerita atau mau ditemenin aja? Dua-duanya boleh.","Pelan-pelan aja. Nggak harus beres malam ini."],
+"😶 Biasa aja":["Ya udah, yang penting hari ini kelar. Malam ini santai aja ya.","Hari yang biasa aja juga nggak apa-apa kok. Nanti mau makan apa?","Oke, berarti malam ini bebas. Mau ngapain?"],
+"😊 Lumayan senang":["Wah, ada apa nih? Cerita dong.","Seneng dengernya. Hari ini ada yang bagus ya?","Syukur deh. Cerita lengkapnya nanti pas makan ya."]};
+var plans={"🍜 Makan enak":"Boleh. Mau masak atau pesen aja? Yang penting kamu nggak usah mikir.","🎬 Nonton":"Yuk. Kamu yang pilih filmnya, aku yang siapin camilan.","😴 Tidur cepat":"Setuju. Hp ditaruh, lampu dimatiin, istirahat yang cukup.","💬 Ngobrol":"Boleh, aku siap dengerin. Cerita dari bagian mana aja."};
+var box=document.getElementById("moods"),pb=document.getElementById("plans");
+pickGroup(box,moods,document.getElementById("msg"));
+pickGroup(pb,plans,document.getElementById("plan"));
+
+var tasks=document.querySelectorAll(".task input"),fill=document.getElementById("fill"),bugs=document.getElementById("bugs");
+function burst(x,y){for(var i=0;i<8;i++){var h=document.createElement("span");h.className="heart";h.textContent=["💗","💖","💕","🩷"][i%4];
+ h.style.left=((x||innerWidth/2)+(Math.random()*120-60))+"px";h.style.top=(y||innerHeight/2)+"px";h.style.animationDelay=(i*60)+"ms";
+ document.body.appendChild(h);(function(e){setTimeout(function(){e.remove()},2000)})(h)}}
+tasks.forEach(function(c){c.addEventListener("change",function(){c.parentNode.classList.toggle("done",c.checked);
+ var d=document.querySelectorAll(".task input:checked").length,n=tasks.length;fill.style.width=(d/n*100)+"%";
+ bugs.textContent=d===n?"Semua beres. Kamu hebat, Anggun. Selamat istirahat! 🌙":(n-d)+" hal lagi, pelan-pelan aja";if(d===n)burst()})});
+
+var n=0,cnt=document.getElementById("cnt");
+document.getElementById("hug").addEventListener("click",function(e){n++;burst(e.clientX,e.clientY);
+ cnt.textContent=n+" pelukan terkirim"+(n>=5?". Cukup erat? Boleh minta lagi kok.":".")});
+
+var orb=document.getElementById("orb"),bt=document.getElementById("bt"),bb=document.getElementById("bb"),bi=null,on=false;
+function ph(){on=!on;orb.classList.toggle("in",on);bt.textContent=on?"Tarik napas...":"Hembuskan pelan-pelan..."}
+bb.addEventListener("click",function(){
+ if(bi){clearInterval(bi);bi=null;orb.classList.remove("in");on=false;bt.textContent="Udah enakan? Tekan mulai kalau mau lagi.";bb.textContent="Mulai";return}
+ ph();bi=setInterval(ph,4000);bb.textContent="Berhenti"});
+
+var wl=document.getElementById("wl"),wi=document.getElementById("wi"),wm=document.getElementById("wm"),
+ wkey="win-"+new Date().toISOString().slice(0,10),items=[];
+try{items=JSON.parse(lsGet(wkey)||"[]")}catch(e){items=[]}
+var reps=["Nah, itu juga hitungan lho.","Bagus, ada lagi?","Keren, makasih udah dicatat.","Pelan-pelan juga maju kok."];
+function draw(){wl.innerHTML="";items.forEach(function(s){var l=document.createElement("li");l.textContent=s;wl.appendChild(l)});
+ if(items.length)wm.textContent=items.length+" hal hari ini. Lumayan banyak, kan?"}
+function add(){var v=wi.value.trim();if(!v)return;items.push(v);wi.value="";lsSet(wkey,JSON.stringify(items));draw();
+ wm.textContent=items.length+" hal hari ini. "+reps[Math.floor(Math.random()*reps.length)];updWA()}
+document.getElementById("wa").addEventListener("click",add);
+wi.addEventListener("keydown",function(e){if(e.key==="Enter")add()});
+draw();
+
+// Tautan WhatsApp selalu berisi href asli, jadi aman di iOS Safari dan Android Chrome.
+var wa=document.getElementById("sendwa");
+function pick(c){var e=c.querySelector('[aria-pressed="true"]');return e?e.textContent.replace(/^\S+\s/,"").toLowerCase():""}
+function updWA(){
+ var m=pick(box),p=pick(pb),l=["Hai, aku udah pulang 🏡"];
+ if(m)l.push("Hari ini rasanya: "+m);
+ if(p)l.push("Malam ini mau: "+p);
+ if(items.length)l.push("Hal kecil yang berhasil hari ini: "+items.join(", "));
+ wa.href="https://wa.me/629520319325?text="+encodeURIComponent(l.join("\n"));
+}
+updWA();
+
+var root=document.documentElement;
+document.getElementById("th").addEventListener("click",function(){
+ var dark=matchMedia("(prefers-color-scheme: dark)").matches;
+ var cur=root.getAttribute("data-theme")||(dark?"dark":"light");
+ root.setAttribute("data-theme",cur==="dark"?"light":"dark")});
+})();
+</script>
+</body>
+</html>
