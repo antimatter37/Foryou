@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#8B7CF6">
+<title>Semangat kerjanya yaaa, Cantikkk!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F0FF;--card:#FFFFFF;--ink:#2B2350;--soft:#6B6394;--lav:#8B7CF6;--pink:#FF8FB1;--line:#E2DCFA;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1736;--card:#272048;--ink:#F3F0FF;--soft:#B5ADDC;--line:#3A3266}}
+:root[data-theme="dark"]{--bg:#1B1736;--card:#272048;--ink:#F3F0FF;--soft:#B5ADDC;--line:#3A3266}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+button{touch-action:manipulation;-webkit-appearance:none;appearance:none}
+html{height:100%;background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+main{position:relative;z-index:1;max-width:580px;margin:0 auto;padding:28px 20px 90px;text-align:center}
+h1,h2{font-family:'Fredoka','Nunito',system-ui,sans-serif;font-weight:600;margin:0}
+h1{font-size:clamp(2rem,8vw,2.8rem);line-height:1.1}
+h1 span{display:inline-block;animation:wave 2.4s ease-in-out infinite;transform-origin:70% 80%}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-10deg)}50%{transform:rotate(8deg)}}
+.sub{color:var(--soft);margin:8px 0 0}
+.hint{font-size:.85rem;color:var(--soft);margin:4px 0 0}
+
+/* hero dog */
+.stage{position:relative;height:330px;margin-top:14px}
+.bubble{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(330px,94%);background:var(--card);border:2px solid var(--line);border-radius:20px;padding:12px 16px;font-weight:700;min-height:62px;display:flex;align-items:center;justify-content:center}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-10px;margin-left:-9px;width:16px;height:16px;background:var(--card);border-right:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.bubble.pop{animation:pop .4s}
+@keyframes pop{0%{transform:translateX(-50%) scale(.9)}60%{transform:translateX(-50%) scale(1.05)}100%{transform:translateX(-50%) scale(1)}}
+.dogbtn{position:absolute;left:50%;bottom:12px;width:230px;margin-left:-115px;border:0;background:none;padding:0;cursor:pointer;animation:dbounce 1.6s ease-in-out infinite;transform-origin:50% 100%}
+.dogbtn:focus-visible{outline:3px solid var(--lav);outline-offset:4px;border-radius:24px}
+.dogbtn.jump{animation:jump .6s ease-out}
+@keyframes dbounce{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-8px) scale(.98,1.02)}}
+@keyframes jump{0%{transform:scale(1.1,.85)}35%{transform:translateY(-60px) scale(.95,1.08) rotate(-6deg)}70%{transform:translateY(0) scale(1.08,.9) rotate(4deg)}100%{transform:none}}
+.shadow{position:absolute;left:50%;bottom:4px;width:150px;height:14px;margin-left:-75px;background:var(--ink);opacity:.12;border-radius:50%}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.tail{transform-box:fill-box;transform-origin:0% 100%;animation:wag .3s ease-in-out infinite alternate}
+@keyframes wag{from{transform:rotate(-20deg)}to{transform:rotate(26deg)}}
+.earl{transform-box:fill-box;transform-origin:75% 8%;animation:flapl 1.4s ease-in-out infinite}
+.earr{transform-box:fill-box;transform-origin:25% 8%;animation:flapr 1.4s ease-in-out infinite}
+@keyframes flapl{0%,100%{transform:rotate(0)}50%{transform:rotate(9deg)}}
+@keyframes flapr{0%,100%{transform:rotate(0)}50%{transform:rotate(-9deg)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.tongue{transform-box:fill-box;transform-origin:50% 0;animation:pant .45s ease-in-out infinite alternate}
+@keyframes pant{from{transform:scaleY(.7)}to{transform:scaleY(1.15)}}
+.head{transform-box:fill-box;transform-origin:50% 100%;animation:nod 2.2s ease-in-out infinite}
+@keyframes nod{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+
+/* animal friends */
+section{margin-top:34px}
+section h2{font-size:1.35rem;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.pet{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:14px 12px 16px;font:inherit;color:inherit;cursor:pointer;text-align:center;transition:transform .15s}
+.pet:active{transform:scale(.97)}
+.pet:focus-visible{outline:3px solid var(--lav);outline-offset:3px}
+.art{width:112px;height:112px;margin:0 auto 8px;border-radius:50%;padding:6px}
+.pet:nth-child(1) .art{background:#E9E4FF}.pet:nth-child(2) .art{background:#FFE3EC}.pet:nth-child(3) .art{background:#FFF1BF}
+.pet.hop .art{animation:hop .6s}
+@keyframes hop{0%,100%{transform:translateY(0)}30%{transform:translateY(-22px) rotate(-8deg)}60%{transform:translateY(0) rotate(6deg)}80%{transform:translateY(-8px)}}
+.pet strong{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;display:block}
+.pet span{display:block;color:var(--soft);font-size:.92rem;min-height:3em}
+.cat-tail{transform-box:fill-box;transform-origin:0% 100%;animation:swish 1.6s ease-in-out infinite alternate}
+@keyframes swish{from{transform:rotate(-14deg)}to{transform:rotate(16deg)}}
+.bear{transform-box:fill-box;transform-origin:50% 100%;animation:twitch 3s infinite}
+@keyframes twitch{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-12deg)}94%{transform:rotate(6deg)}}
+.bun-ear-l{transform-box:fill-box;transform-origin:50% 100%;animation:bl 2.4s ease-in-out infinite}
+.bun-ear-r{transform-box:fill-box;transform-origin:50% 100%;animation:br 2.4s ease-in-out infinite}
+@keyframes bl{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-14deg)}}
+@keyframes br{0%,100%{transform:rotate(4deg)}50%{transform:rotate(14deg)}}
+.chick{transform-box:fill-box;transform-origin:50% 100%;animation:peck 1.2s ease-in-out infinite}
+@keyframes peck{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(3px) rotate(6deg)}}
+.wing{transform-box:fill-box;transform-origin:80% 20%;animation:flutter .5s ease-in-out infinite alternate}
+@keyframes flutter{from{transform:rotate(0)}to{transform:rotate(-22deg)}}
+
+.tired{display:block;margin:0 auto;border:0;background:var(--lav);color:#fff;font:600 1.05rem 'Fredoka',system-ui,sans-serif;padding:14px 26px;min-height:48px;border-radius:999px;cursor:pointer;box-shadow:0 5px 0 #6B5BD6;transition:transform .1s,box-shadow .1s}
+.tired:active{transform:translateY(4px);box-shadow:0 1px 0 #6B5BD6}
+.tired:focus-visible{outline:3px solid #FFD66B;outline-offset:3px}
+.tiredmsg{margin:16px auto 0;max-width:420px;color:var(--soft);min-height:3.4em}
+footer{margin-top:36px;color:var(--soft);font-size:.9rem}
+code{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:.85rem}
+
+/* particles + running animals */
+.fx{position:fixed;pointer-events:none;z-index:50;font-size:1.4rem;animation:fly 1.2s ease-out forwards}
+@keyframes fly{0%{opacity:1;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.3) rotate(var(--r))}}
+.float{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.float b{position:absolute;bottom:-40px;font-weight:400;opacity:.35;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-112vh) rotate(40deg)}}
+.run{position:fixed;left:0;bottom:calc(env(safe-area-inset-bottom,0px) + 6px);z-index:2;pointer-events:none;font-size:2rem;white-space:nowrap;animation:across 16s linear infinite}
+.run i{display:inline-block;font-style:normal;margin-right:26px;animation:trot .45s ease-in-out infinite alternate}
+.run i:nth-child(2n){animation-delay:-.2s}
+@keyframes across{from{transform:translateX(-130%)}to{transform:translateX(100vw)}}
+@keyframes trot{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-8px) rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.float,.run{display:none}}
+</style>
+</head>
+<body>
+<div class="float" id="float" aria-hidden="true"></div>
+<div class="run" aria-hidden="true"><i>🐕</i><i>🐈</i><i>🐇</i><i>🐥</i><i>🐹</i></div>
+<main>
+  <h1>Hari Baru Cerita Baruu, Semangat ya Anggun! <span>👋</span></h1>
+  <p class="sub">Si anjing dan teman-temannya datang buat nyemangatin kamu.</p>
+
+  <div class="stage">
+    <div class="bubble" id="bubble" aria-live="polite">Guk guk! Semangat ya, Moodbosterku!</div>
+    <button class="dogbtn" id="dog" aria-label="Elus anjing untuk afirmasi baru">
+      <svg viewBox="0 0 200 190" aria-hidden="true">
+        <path class="tail" d="M150 140 Q186 112 178 80" stroke="#E9A24F" stroke-width="15" fill="none" stroke-linecap="round"/>
+        <ellipse cx="100" cy="145" rx="56" ry="38" fill="#F2B66D"/>
+        <rect x="68" y="150" width="24" height="34" rx="12" fill="#F2B66D"/>
+        <rect x="108" y="150" width="24" height="34" rx="12" fill="#F2B66D"/>
+        <ellipse cx="80" cy="184" rx="15" ry="7" fill="#FFE3BD"/><ellipse cx="120" cy="184" rx="15" ry="7" fill="#FFE3BD"/>
+        <g class="head">
+          <ellipse class="earl" cx="52" cy="92" rx="17" ry="36" fill="#9A5B2E"/>
+          <ellipse class="earr" cx="148" cy="92" rx="17" ry="36" fill="#9A5B2E"/>
+          <circle cx="100" cy="88" r="50" fill="#F2B66D"/>
+          <circle cx="122" cy="78" r="17" fill="#9A5B2E"/>
+          <ellipse class="eye" cx="80" cy="80" rx="6.5" ry="8.5" fill="#2B2350"/><circle cx="82" cy="77" r="2.4" fill="#fff"/>
+          <ellipse class="eye" cx="120" cy="80" rx="6.5" ry="8.5" fill="#2B2350"/><circle cx="122" cy="77" r="2.4" fill="#fff"/>
+          <ellipse cx="100" cy="108" rx="29" ry="21" fill="#FFE3BD"/>
+          <ellipse cx="68" cy="102" rx="9" ry="5" fill="#FF8FB1" opacity=".55"/><ellipse cx="132" cy="102" rx="9" ry="5" fill="#FF8FB1" opacity=".55"/>
+          <path class="tongue" d="M92 114 h16 v10 a8 8 0 0 1 -16 0z" fill="#FF6F9C"/>
+          <path d="M100 100 v9 M100 109 q-10 9 -18 0 M100 109 q10 9 18 0" stroke="#3B2A2A" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <ellipse cx="100" cy="96" rx="10" ry="6.5" fill="#3B2A2A"/><ellipse cx="97" cy="94" rx="3" ry="1.6" fill="#fff" opacity=".6"/>
+        </g>
+      </svg>
+    </button>
+    <div class="shadow"></div>
+  </div>
+  <p class="hint">Elus si anjing untuk afirmasi baru</p>
+
+  <section>
+    <h2>Teman-teman penyemangat</h2>
+    <div class="grid">
+      <button class="pet" data-m="0">
+        <div class="art"><svg viewBox="0 0 120 120" aria-hidden="true">
+          <path class="cat-tail" d="M90 102 Q124 94 112 62" stroke="#A79DE6" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <ellipse cx="60" cy="100" rx="30" ry="20" fill="#B9B2E8"/>
+          <polygon class="bear" points="33,48 36,15 58,34" fill="#B9B2E8"/><polygon points="38,40 40,24 51,34" fill="#FF9FBE"/>
+          <polygon points="87,48 84,15 62,34" fill="#B9B2E8"/><polygon points="82,40 80,24 69,34" fill="#FF9FBE"/>
+          <circle cx="60" cy="64" r="32" fill="#B9B2E8"/>
+          <path d="M52 36 v8 M60 34 v10 M68 36 v8" stroke="#A79DE6" stroke-width="3" stroke-linecap="round"/>
+          <ellipse class="eye" cx="46" cy="62" rx="5" ry="7" fill="#2B2350"/><ellipse class="eye" cx="74" cy="62" rx="5" ry="7" fill="#2B2350"/>
+          <circle cx="47.5" cy="59.5" r="2" fill="#fff"/><circle cx="75.5" cy="59.5" r="2" fill="#fff"/>
+          <polygon points="56,70 64,70 60,75" fill="#FF6F9C"/>
+          <path d="M60 75 q-5 6 -10 2 M60 75 q5 6 10 2" stroke="#2B2350" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <path d="M34 72 l-14 -3 M34 78 l-14 3 M86 72 l14 -3 M86 78 l14 3" stroke="#2B2350" stroke-width="2" stroke-linecap="round"/>
+        </svg></div>
+        <strong>Si Kucing</strong><span>Meong. Santai aja, pelan-pelan juga sampai.</span>
+      </button>
+      <button class="pet" data-m="1">
+        <div class="art"><svg viewBox="0 0 120 120" aria-hidden="true">
+          <ellipse class="bun-ear-l" cx="46" cy="30" rx="10" ry="27" fill="#fff"/><ellipse cx="46" cy="32" rx="5" ry="18" fill="#FFB8CE"/>
+          <ellipse class="bun-ear-r" cx="74" cy="30" rx="10" ry="27" fill="#fff"/><ellipse cx="74" cy="32" rx="5" ry="18" fill="#FFB8CE"/>
+          <ellipse cx="60" cy="102" rx="28" ry="18" fill="#fff"/>
+          <circle cx="60" cy="72" r="30" fill="#fff"/>
+          <ellipse cx="42" cy="80" rx="7" ry="4.5" fill="#FF9FBE" opacity=".6"/><ellipse cx="78" cy="80" rx="7" ry="4.5" fill="#FF9FBE" opacity=".6"/>
+          <ellipse class="eye" cx="48" cy="68" rx="4.5" ry="6.5" fill="#2B2350"/><ellipse class="eye" cx="72" cy="68" rx="4.5" ry="6.5" fill="#2B2350"/>
+          <circle cx="49.5" cy="66" r="1.8" fill="#fff"/><circle cx="73.5" cy="66" r="1.8" fill="#fff"/>
+          <ellipse cx="60" cy="76" rx="4" ry="3" fill="#FF6F9C"/>
+          <path d="M60 79 q-4 5 -8 2 M60 79 q4 5 8 2" stroke="#2B2350" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <rect x="52" y="82" width="6" height="7" rx="1.5" fill="#fff" stroke="#E2DCFA"/><rect x="62" y="82" width="6" height="7" rx="1.5" fill="#fff" stroke="#E2DCFA"/>
+        </svg></div>
+        <strong>Si Kelinci</strong><span>Lompat satu langkah dulu, yang lain nyusul.</span>
+      </button>
+      <button class="pet" data-m="2">
+        <div class="art"><svg viewBox="0 0 120 120" aria-hidden="true">
+          <g class="chick">
+            <path d="M54 34 q-4 -14 4 -16 M60 33 q0 -16 8 -14 M66 34 q6 -10 10 -4" stroke="#FFB400" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <circle cx="60" cy="68" r="36" fill="#FFD66B"/>
+            <path class="wing" d="M88 70 q18 6 8 24 q-14 -4 -16 -20z" fill="#FFC23D"/>
+            <ellipse class="eye" cx="46" cy="62" rx="4.5" ry="6.5" fill="#2B2350"/><ellipse class="eye" cx="74" cy="62" rx="4.5" ry="6.5" fill="#2B2350"/>
+            <circle cx="47.5" cy="60" r="1.8" fill="#fff"/><circle cx="75.5" cy="60" r="1.8" fill="#fff"/>
+            <ellipse cx="38" cy="76" rx="7" ry="4.5" fill="#FF8FB1" opacity=".6"/><ellipse cx="82" cy="76" rx="7" ry="4.5" fill="#FF8FB1" opacity=".6"/>
+            <polygon points="52,72 68,72 60,83" fill="#FF8A3D"/>
+          </g>
+          <path d="M48 106 v8 M44 114 h8 M72 106 v8 M68 114 h8" stroke="#FF8A3D" stroke-width="3" stroke-linecap="round"/>
+        </svg></div>
+        <strong>Si Anak Ayam</strong><span>Cip cip. Kamu lebih kuat dari yang kamu kira.</span>
+      </button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kalau mulai capek</h2>
+    <button class="tired" id="tired">Aku butuh jeda</button>
+    <p class="tiredmsg" id="tiredmsg"></p>
+  </section>
+
+  <footer>
+    <code>“Anggun kamu hebat hari ini”</code>
+    <p>Dari seseorang yang selalu percaya sama kamu. Semoga harimu lancarr... 💜</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var dogSays = [
+    "Guk guk! Kamu diterima karena kamu memang pantas.",
+    "Guk! Nggak tahu itu wajar. Bertanya itu tanda orang pintar.",
+    "Wuf wuf! Pelan-pelan juga maju, yang penting on target.",
+    "Guk! Senyummu itu fitur terbaik di kantor mana pun.",
+    "Hehe guk! Salah sedikit? Tenang, semua bisa di-rollback.",
+    "Guk guk! Kamu bawa energi baik. Rekan-rekanmu beruntung.",
+    "Wuf! Satu hal kecil selesai hari ini sudah cukup bagus.",
+    "Guk! Kamu anggun, bukan cuma namanya, tapi caramu menghadapi hari."
+  ];
+  var petSays = [
+    ["Meong! Tarik napas, lalu kerjakan satu hal dulu.", "Purr... kamu sudah sejauh ini, bangga ya.", "Meong! Istirahat sebentar itu bagian dari kerja."],
+    ["Hop hop! Nggak ada yang minta kamu tahu semuanya.", "Hop! Mulai dari hal kecil, nanti jadi besar.", "Hop hop! Kamu cepat belajar, aku yakin."],
+    ["Cip cip! Ada banyak hal tak terduga, tapi aku yakin kamu bisa ;).", "Cip! Kamu nggak sendirian.", "Cip cip! Pulang kerja nanti, kamu pantas dapat hadiah kecil. Tiramisu Redo misalnya."]
+  ];
+  var tiredMsgs = [
+    "Tarik napas 4 detik, tahan 4 detik, hembuskan 6 detik. Ulangi tiga kali.",
+    "Lemaskan bahu dan rahangmu. Kamu sudah melakukan yang terbaik.",
+    "Minum air, lihat jauh keluar jendela, lalu lanjut pelan-pelan.",
+    "Capek itu tandanya kamu sudah berusaha. Kamu boleh istirahat sebentar."
+  ];
+  var fx = ["🐾","💜","🐶","🐱","🐰","🐥","✨","💖"];
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var bubble = document.getElementById("bubble"), last = -1;
+
+  function burst(x, y, n){
+    if(reduce) return;
+    for(var i=0;i<n;i++){
+      var h = document.createElement("div");
+      h.className = "fx";
+      h.textContent = fx[Math.floor(Math.random()*fx.length)];
+      h.style.left = x+"px"; h.style.top = y+"px";
+      h.style.setProperty("--dx", (Math.random()*240-120)+"px");
+      h.style.setProperty("--dy", (-60-Math.random()*160)+"px");
+      h.style.setProperty("--r", (Math.random()*60-30)+"deg");
+      document.body.appendChild(h);
+      setTimeout(function(el){return function(){el.remove();};}(h), 1300);
+    }
+  }
+
+  var dog = document.getElementById("dog");
+  dog.addEventListener("click", function(){
+    var i; do { i = Math.floor(Math.random()*dogSays.length); } while(i === last);
+    last = i;
+    bubble.textContent = dogSays[i];
+    bubble.classList.remove("pop"); void bubble.offsetWidth; bubble.classList.add("pop");
+    dog.classList.remove("jump"); void dog.offsetWidth; dog.classList.add("jump");
+    var r = dog.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + 40, 10);
+  });
+
+  var idx = [0,0,0];
+  document.querySelectorAll(".pet").forEach(function(p){
+    p.addEventListener("click", function(){
+      var k = +p.dataset.m;
+      p.querySelector("span").textContent = petSays[k][idx[k]++ % petSays[k].length];
+      p.classList.remove("hop"); void p.offsetWidth; p.classList.add("hop");
+      var r = p.getBoundingClientRect();
+      burst(r.left + r.width/2, r.top + 40, 6);
+    });
+  });
+
+  var ti = 0, msg = document.getElementById("tiredmsg");
+  document.getElementById("tired").addEventListener("click", function(e){
+    msg.textContent = tiredMsgs[ti++ % tiredMsgs.length];
+    var r = e.currentTarget.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top, 6);
+  });
+
+  var fl = document.getElementById("float"), bg = ["🐾","🐶","🐱","🐰","🐥","🐹","🐻","🐾"];
+  for(var i=0;i<16;i++){
+    var s = document.createElement("b");
+    s.textContent = bg[i % bg.length];
+    s.style.left = (Math.random()*100)+"%";
+    s.style.fontSize = (16+Math.random()*20)+"px";
+    s.style.animationDuration = (14+Math.random()*16)+"s";
+    s.style.animationDelay = (-Math.random()*20)+"s";
+    fl.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
